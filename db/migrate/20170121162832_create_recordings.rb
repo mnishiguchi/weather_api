@@ -4,6 +4,8 @@ class CreateRecordings < ActiveRecord::Migration[5.0]
       t.integer :temp
       t.string :status
 
+      t.references :location
+
       t.timestamps
     end
   end
