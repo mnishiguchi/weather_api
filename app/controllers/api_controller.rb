@@ -1,8 +1,4 @@
 class ApiController < ApplicationController
-  # https://github.com/nsarno/knock
-  include Knock::Authenticable
-
-  before_action :authenticate_user
   before_action :set_default_format
 
   private

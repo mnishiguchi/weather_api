@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
+  get 'recordings/show'
+
+  get 'locations/show'
 
   namespace :api do
     namespace :v1 do
-      # https://github.com/nsarno/knock
-      post 'user_token' => 'user_token#create'
-
       resources :locations do
         resources :recordings
       end
