@@ -46,6 +46,11 @@ using database or in-memory state cache.
 
 ---
 
+## Knock gem
+- [https://github.com/nsarno/knock](https://github.com/nsarno/knock)
+
+---
+
 ## Models
 
 ![](erd/erd.jpg)
