@@ -15,4 +15,13 @@ class User < ApplicationRecord
   #               password: "password",
   #               password_confirmation: "password"
   has_secure_password
+
+  # https://github.com/nsarno/knock#customization
+  def to_token_payload
+    {
+      sub:   id,
+      email: email,
+      admin: true
+    }
+  end
 end
