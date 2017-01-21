@@ -18,3 +18,8 @@ Location.all.each do |location|
     location.recordings.create!(temp: temp_list.sample, status: status_list.sample)
   end
 end
+
+# Register a user with a password
+User.create email:    "user@example.com",
+            password: "password",
+            password_confirmation: "password"
