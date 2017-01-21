@@ -1,4 +1,4 @@
-class Api::V1::LocationsController < ApplicationController
+class Api::V1::LocationsController < ApiController
   before_action :set_location
 
   # http://localhost:3000/api/v1/locations/1.json
