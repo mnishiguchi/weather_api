@@ -97,8 +97,7 @@ $ curl -v http://localhost:3000/api/v1/locations/1
 Try to access our api with a JWT
 
 ```bash
-$ curl -v -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0ODUxMTQ1ODMsInN1YiI6MX0.RRkN-X3EGUHhMM3wTfvWujupnmNwXxP9k3bma5SkBYw" h
-ttp://localhost:3000/api/v1/locations/1
+$ curl -v -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0ODUxMTQ1ODMsInN1YiI6MX0.RRkN-X3EGUHhMM3wTfvWujupnmNwXxP9k3bma5SkBYw" http://localhost:3000/api/v1/locations/1
 *   Trying ::1...
 * Connected to localhost (::1) port 3000 (#0)
 > GET /api/v1/locations/1 HTTP/1.1
