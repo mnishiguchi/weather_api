@@ -53,11 +53,6 @@ using database or in-memory state cache.
 
 ---
 
-## ruby-jwt gem
-- [docs](https://github.com/jwt/ruby-jwt)
-
----
-
 ## Simulating log in form submission from a single page app
 
 ### using cUrl

@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'recordings/show'
-
-  get 'locations/show'
+  devise_for :users
 
   namespace :api do
     namespace :v1 do
