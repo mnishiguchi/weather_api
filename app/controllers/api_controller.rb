@@ -7,8 +7,10 @@ class ApiController < ApplicationController
   # http://apidock.com/rails/v4.2.1/ActionController/RequestForgeryProtection/verify_authenticity_token
   skip_before_action :verify_authenticity_token
 
+  # Devise will know that we want to render json because we set default format
+  # before running Devise authentication.
   before_action :set_default_format
-  before_action :authenticate_token!
+  before_action :authenticate_user!
 
   private
 
@@ -18,24 +20,5 @@ class ApiController < ApplicationController
       # No matter what format is requested, we force to handle it as json.
       # If needed, we can write logic to determine how we handle other formats.
       request.format = :json
-    end
-
-    def authenticate_token!
-      payload = JsonWebToken.decode(auth_token)
-      @current_user = User.find(payload["sub"])
-
-      p @current_user
-
-    # Define descriptive error messages for each error type.
-    # https://github.com/jwt/ruby-jwt/blob/master/lib/jwt/error.rb
-    rescue JWT::ExpiredSignature
-      render json: {errors: ["Auth token has expired"]}, status: :unauthrized
-    rescue JWT::DecodeError
-      render json: {errors: ["invalid token"]}, status: :unauthrized
-    end
-
-    # Extracts a token from a request header if any.
-    def auth_token
-      @auth_token ||= request.headers.fetch("Authorization", "").split(" ").last
     end
 end
