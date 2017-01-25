@@ -1,10 +1,35 @@
 <h1>Locations#index</h1>
-<p>Find me in app/views/locations/index.html.erb</p>
 
-<div id="my-app"></div>
+<div id="my-app">
+  <Login />
+</div>
+
+<script type="text/x-template" id="login-template">
+  <form>
+    <input v-model="email"    type="email"    placeholder="email">
+    <input v-model="password" type="password" placeholder="password">
+    <button v-on:click="submit">Login </button>
+  </form>
+</script>
 
 <script>
-  new Vue({
-    el: "#my-app"
+  // Define <Login />.
+  const loginComponent = Vue.component('Login', {
+    template: "#login-template",
+    data: () => ({
+      email:    "user@example.com",
+      password: "password"
+    }),
+    methods: {
+      submit: (e) => {
+        e.preventDefault()
+        console.log(`submitted`)
+      }
+    }
+  })
+
+  // Create <Root />
+  const vm = new Vue({
+    el: "#my-app",
   })
 </script>
