@@ -1,7 +1,12 @@
 <h1>Locations#index</h1>
 
 <div id="my-app">
-  <Login />
+  <div v-if="token == null">
+    <Login />
+  </div>
+  <div v-else>
+    Logged in
+  </div>
 </div>
 
 <script type="text/x-template" id="login-template">
@@ -13,23 +18,48 @@
 </script>
 
 <script>
+  // Define the state.
+  const state = {
+    token: localStorage.getItem('token')
+  }
+
   // Define <Login />.
   const loginComponent = Vue.component('Login', {
     template: "#login-template",
     data: () => ({
-      email:    "user@example.com",
-      password: "password"
+      email:    this.email,
+      password: this.password
     }),
     methods: {
       submit: (e) => {
         e.preventDefault()
         console.log(`submitted`)
+        axios.post('/api/v1/auth', {
+          user: {
+            email:    "user@example.com",
+            password: "password"
+          }
+        })
+        .then(response => {
+          const { data } = response
+          console.log(data)
+
+          // Store the token to local storage.
+          localStorage.setItem('token', data.token)
+
+          // Update state to trigger re-render.
+          state.token = data.token
+        })
+        .catch(error => {
+          console.log(error)
+        })
       }
     }
   })
 
   // Create <Root />
   const vm = new Vue({
-    el: "#my-app",
+    el:   "#my-app",
+    data: state  // Any change in state will trigger re-render.
   })
 </script>
