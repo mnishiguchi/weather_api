@@ -1,6 +1,4 @@
 class Api::V1::LocationsController < ApiController
-  skip_before_action :authenticate_user! # FIXME: Temporarily deactivate authentication
-
   before_action :set_location
 
   # http://localhost:3000/api/v1/locations/1.json
